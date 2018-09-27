@@ -151,7 +151,6 @@ open class Mangadex(override val lang: String, private val internalLang: String,
 
         // Do traditional search
         val url = HttpUrl.parse("$baseUrl/?page=search")!!.newBuilder()
-                .addQueryParameter("s", "0")
                 .addQueryParameter("p", page.toString())
                 .addQueryParameter("title", query.replace(WHITESPACE_REGEX, " "))
 
