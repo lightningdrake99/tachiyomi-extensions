@@ -178,6 +178,12 @@ open class Mangadex(override val lang: String, private val internalLang: String,
                         }
                     }
                 }
+                 is Sort -> {
+                    if (filter.state != 0) {
+                        val number: String = SORT_LIST.first { it -> it.first == filter.values[filter.state] }.second
+                        url.addQueryParameter("s", number)
+                    }
+                 }
             }
         }
 
@@ -499,6 +505,21 @@ open class Mangadex(override val lang: String, private val internalLang: String,
                 Pair("Spanish (LATAM)", "29"),
                 Pair("Thai", "32"),
                 Pair("Filipino", "34"))
+        
+          private val SORT_LIST = listOf(
+                Pair("New", "0"),
+                Pair("Old", "1"),
+                Pair("Title (A-Z)", "2"),
+                Pair("Title (Z-A)", "3"),
+                Pair("Comments, ascending", "4"),
+                Pair("Comments, descending", "5"),
+                Pair("Rating, ascending", "6"),
+                Pair("Rating, descending", "7"),
+                Pair("Views, ascending", "8"),
+                Pair("Views, descending", "9")
+                Pair("Follows, ascending", "10"),
+                Pair("Follows, descending", "11"))
+              
     }
 
 }
